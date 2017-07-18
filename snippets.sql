@@ -7,3 +7,6 @@ SELECT
 
 /* Big Int to date */
 TO_CHAR(TO_TIMESTAMP(bigint_field / 1000), 'DD/MM/YYYY HH24:MI:SS')
+
+/* Number of days between to bigint epochs */
+extract(day from ('1970-01-01 00:00:00 GMT'::timestamp + ((dw.expiry_date/1000)::text)::interval) - ('1970-01-01 00:00:00 GMT'::timestamp + ((qt.time/1000)::text)::interval) )
